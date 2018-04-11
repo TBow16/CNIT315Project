@@ -4,7 +4,7 @@ struct Node
 {
   char username[100];
   char message[255];
-  int count;
+  int count, bitCount;
   struct Node *next;
 };
 
