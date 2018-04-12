@@ -30,9 +30,33 @@ int main()
     printf("Enter Twitch Link: ");
     scanf(" %s", link);
     
-    while (choice != )
+    while (choice != 5)
     {
+      printf("#Menu \n");
+      prinft("1. Execute \n");
+      printf("2. Traverse \n");
+      printf("3. Sort \n");
+      printf("4. Search \n");
+      printf("5. Exit \n");
       
+      scanf(" %d", choice);
+      
+      if (1 == choice)
+      {
+        
+      }
+      else if (2 == choice)
+      {
+      }
+      else if (3 == choice)
+      {
+      }
+      else if (4 == choice)
+      {
+      }
+      else if (5 == choice)
+      {
+      }
     }
   
 }
