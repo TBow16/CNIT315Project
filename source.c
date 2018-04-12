@@ -21,6 +21,20 @@ struct Node *CreateNode(char username[], char message[], int count)
     newnode->next = NULL;
 };
 
+
+
+void traverse(struct List *list)
+{
+struct Node *temp=(struct Node *)malloc(sizeof(Node));
+  temp=list->start;
+  while (temp!=NULL)
+  {
+  printf("username:%s message:%s \n",temp->username,temp-=>message);
+  }
+
+printf("chat room display completed\n");
+}
+
 int main()
 {
   int choice;
