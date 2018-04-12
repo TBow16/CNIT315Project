@@ -1,5 +1,6 @@
 #include jsmn.h
 
+
 struct Node
 {
   char username[100];
@@ -7,6 +8,23 @@ struct Node
   int count, bitCount;
   struct Node *next;
 };
+
+
+struct List
+{
+struct Node *start;
+}*list;
+
+struct List Createlist()
+{
+struct List *list =(struct List *)malloc(sizeof(struct List));
+if (list==NULL)
+  { printf("Memory allocation failed\n");
+  }
+list->start=NULL;
+}
+
+
 
 struct Node *CreateNode(char username[], char message[], int count)
 {
