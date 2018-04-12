@@ -1,8 +1,11 @@
 #include jsmn.h
 
+
+
+int usercount=1;
 struct Node
 {
-  char username[25];
+  char username[100];
   char message[255];
   int count, bitCount;
   struct Node *next;
@@ -34,8 +37,9 @@ struct Node *CreateNode(char username[], char message[], int count)
     }
     strcpy(newnode->username, username);
     strcpy(newnode->message, message);
-    newnode->count = count;
+    newnode->count = usercount;
     newnode->next = NULL;
+    usercount++;
 };
 
 
@@ -61,33 +65,9 @@ int main()
     printf("Enter Twitch Link: ");
     scanf(" %s", link);
     
-    while (choice != 5)
+    while (choice != )
     {
-      printf("#Menu \n");
-      prinft("1. Execute \n");
-      printf("2. Traverse \n");
-      printf("3. Sort \n");
-      printf("4. Search \n");
-      printf("5. Exit \n");
       
-      scanf(" %d", choice);
-      
-      if (1 == choice)
-      {
-        
-      }
-      else if (2 == choice)
-      {
-      }
-      else if (3 == choice)
-      {
-      }
-      else if (4 == choice)
-      {
-      }
-      else if (5 == choice)
-      {
-      }
     }
   
 }
