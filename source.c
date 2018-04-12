@@ -1,12 +1,29 @@
 #include jsmn.h
 
-struct Node twitchInfo
+struct Node
 {
   char username[25];
   char message[255];
   int count, bitCount;
   struct Node *next;
 };
+
+
+struct List
+{
+struct Node *start;
+}*list;
+
+struct List Createlist()
+{
+struct List *list =(struct List *)malloc(sizeof(struct List));
+if (list==NULL)
+  { printf("Memory allocation failed\n");
+  }
+list->start=NULL;
+}
+
+
 
 struct Node *CreateNode(char username[], char message[], int count)
 {
@@ -20,6 +37,20 @@ struct Node *CreateNode(char username[], char message[], int count)
     newnode->count = count;
     newnode->next = NULL;
 };
+
+
+
+void traverse(struct List *list)
+{
+struct Node *temp=(struct Node *)malloc(sizeof(Node));
+  temp=list->start;
+  while (temp!=NULL)
+  {
+  printf("username:%s message:%s \n",temp->username,temp-=>message);
+  }
+
+printf("chat room display completed\n");
+}
 
 int main()
 {
