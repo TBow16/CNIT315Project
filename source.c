@@ -1,8 +1,8 @@
 #include jsmn.h
 
-struct Node
+struct Node twitchInfo
 {
-  char username[100];
+  char username[25];
   char message[255];
   int count, bitCount;
   struct Node *next;
