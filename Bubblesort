@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int randomnumber;
+int moved;
+int loopinteger;
+double starttime;
+double endtime;
+double elapsedtime;
+
+void bubblesort(int *ARRAY, int n){
+	starttime = clock();
+	for(randomnumber = 0; randomnumber < n-1; randomnumber++)
+	for(loopinteger = 0; loopinteger < n-randomnumber-1; loopinteger++) 
+	{
+		if(*(ARRAY + loopinteger) > *(ARRAY + (loopinteger + 1)))
+		{
+			moved = *(ARRAY + loopinteger);
+			*(ARRAY + loopinteger) = *(ARRAY + (loopinteger + 1));
+			*(ARRAY + (loopinteger + 1)) = moved;
+		}
+	}
+	endtime = clock();
+	elapsedtime = (endtime - starttime) / CLOCKS_PER_SEC;
+	printf("Bubble Sort Elapsed time (%d)= %f\n", n, elapsedtime);
+}
+
+void rng(int *ARRAY, int n){
+
+	srand(time(NULL));
+	for(randomnumber = 0; randomnumber < n; randomnumber++)
+	*(ARRAY + randomnumber) = rand();
+}
+
+int main() {
+	int ARRAY[100000];
+	printf("\n");
+	
+	rng(ARRAY, 10);
+	bubblesort(ARRAY, 10);
+
+	printf("\n");
+	
+	return 0;
+}
