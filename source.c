@@ -1,6 +1,6 @@
-#include stdio.h
-#include stdlib.h
-#include jsmn.h
+#include <stdio.h>
+#include <stdlib.h>
+#include <jsmn.h>
 
 void bubbleSort(struct Node *start);
 void swap(struct Node *a, struct Node *b);
