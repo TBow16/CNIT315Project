@@ -6,6 +6,7 @@ void bubbleSort(struct Node *start);
 void swap(struct Node *a, struct Node *b);
 
 int usercount=1;
+/*Node Structure*/
 struct Node
 {
   char username[100];
@@ -14,12 +15,13 @@ struct Node
   struct Node *next;
 }user;
 
-
+/*List Structure*/
 struct List
 {
 struct Node *start;
 }*list;
 
+/*Creates List*/
 struct List *CreateList()
 {
     struct List *newlist = (struct List *)malloc(sizeof(struct List));
@@ -31,6 +33,8 @@ struct List *CreateList()
 
     return newlist;
 }
+
+/*Creates Node*/
 struct Node *CreateNode(char username[], char message[], int count)
 {
     struct Node *newnode = (struct Node *)malloc(sizeof(struct Node));
@@ -45,8 +49,7 @@ struct Node *CreateNode(char username[], char message[], int count)
     usercount++;
 };
 
-
-
+/*Traverse the list*/
 void Traverse(struct List *list)
 {
     struct Node *temp = list->start; 
@@ -80,6 +83,7 @@ int main()
     printf("Enter Twitch Link: ");
     scanf(" %s", link);
     
+  /*Prints main menu*/
     while (choice != 5)
     {
       printf("╔════════════════════════════╗\n");
@@ -92,6 +96,7 @@ int main()
       printf("║ 5. Exit                    ║\n");
       printf("╚════════════════════════════╝\n \n");
       
+      /*Scans for selected option and runs it*/
       printf("Enter choice: \n");
       scanf("%d", &choice);
       
@@ -101,6 +106,7 @@ int main()
         printf("Your choice (1-5): \n");
         scanf(" %d", &choice);
     }
+    /*Currently add to front of list*/
     if (1 == choice)
     {
             if(list == NULL)
@@ -122,10 +128,14 @@ int main()
                 InsertFront(list, username, message, user.count); 
             }
     }
+    
+    /*Print the list*/
     else if (2 == choice)
     {
         Traverse(list);
     }
+      
+    /*Sort the List*/
     else if (3 == choice)       /* Sorting */
     {
         choice = 0;
@@ -149,9 +159,11 @@ int main()
             }
             if (1 == choice)
             {
+              void bubbleSort(list);
             }
             else if (2 == choice)
             {
+              printf("Function does not exist");
             }
             else if (3 == choice)
             {
@@ -188,6 +200,7 @@ int main()
             }
             else if (2 == choice)
             {
+              printf("Function does not exist");
             }
             else if (3 == choice)
             {
