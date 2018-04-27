@@ -208,6 +208,7 @@ int main()
             }
         }
     }
+      /*Create List*/
     else if (5 == choice)
     {
         printf(" ( ͡° ͜ʖ ͡°) \n");
@@ -225,7 +226,7 @@ int main()
 }
 
 
-
+/*bubble sort method*/
 void bubbleSort(struct Node *start)
 {
     int swapped, i;
