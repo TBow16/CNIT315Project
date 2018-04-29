@@ -18,6 +18,7 @@ int main(){
 	char channel [25];
 
 	struct List *list;
+	struct Node *start;
 
 	/*Main Menu*/
 	do{
@@ -69,7 +70,11 @@ int main(){
 					switch(menu2){
 						/*Bubble Sort*/
 						case 1:
-							printf("\nThis feature will be added at a later date \n");
+							if(start != NULL){
+								bubbleSort(start);
+							} else {
+								printf("The list does not exist. \n");
+							}
 							break;
 						/*Binary Sort*/
 						case 2:
