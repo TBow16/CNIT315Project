@@ -16,7 +16,7 @@ int main(){
 	int menu1;
 	int menu2;
 	char channel [25];
-
+	char user;
 	struct List *list;
 	struct Node *start;
 
@@ -101,7 +101,9 @@ int main(){
 					switch(menu2){
 						/*Linear Search*/
 						case 1:
-							printf("\nThis feature will be added at a later date \n");
+							printf("\n Enter username\n");
+							scanf("%s",user);
+							linearsearch(list, user)
 							break;
 						/*Binary Search*/
 						case 2:
@@ -225,4 +227,22 @@ void insertfront(struct List *list, char username[], char message[]){
 	
 	newnode->next = list->start;
 	list->start = newnode;
+}
+
+
+
+struct Node *linearsearch(struct List *list, char user)
+{
+struct Node *temp = (struct Node *)malloc(sizeof(struct Node)); 
+temp=list->start;
+while (temp!=NULL)
+{ if (strcmp(user,temp->username)==0)
+	{printf("\nusername:%s message:%s\n",temp->username,temp->message);}
+ temp=temp->next;
+}
+printf("\nno user found\n")
+
+
+
+
 }
