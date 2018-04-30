@@ -11,7 +11,6 @@ void swap(struct Node *a, struct Node *b);
 void insertfront(struct List *list, char username[], char message[]);
 
 int main(){
-
 	
 	/*varible declaration*/
 	int menu1;
