@@ -8,7 +8,6 @@ struct List;
 struct List *CreateList();
 void Traverse(struct List *list);
 void bubbleSort(struct List *list);
-void swap(struct Node *a, struct Node *b);
 void insertfront(struct List *list, char username[], char message[]);
 void linearsearch(struct List *list, char user[]);
 
@@ -216,6 +215,7 @@ void Traverse(struct List *list){
 void bubbleSort(struct List *list){
 
 	int swapped;
+	int cmp;
 	struct Node *ptr1;
 	struct Node *lptr = NULL;
 	ptr1 = list->start;
@@ -226,9 +226,18 @@ void bubbleSort(struct List *list){
 
 		while (ptr1->next != lptr){
 
-			if (ptr1->username > ptr1->next->username){
-				swap(ptr1, ptr1->next);
-				swapped = 1;
+			cmp = strcmp(ptr1->username, ptr1->next->username);
+
+			if (cmp > 0){
+
+				char temp1[25];
+				char temp2[255];
+				strcpy(temp1, ptr1->username);
+				strcpy(temp2, ptr1->message);
+				strcpy(ptr1->username, ptr1->next->username);
+				strcpy(ptr1->message, ptr1->next->username);
+				strcpy(ptr1->next->username, temp1);
+				strcpy(ptr1->next->message, temp2);
 			}
 
 			ptr1 = ptr1->next;
@@ -238,19 +247,6 @@ void bubbleSort(struct List *list){
 	}while (swapped);
 }
 
-/*Swaps the Data Stored in a Node*/
-void swap(struct Node *a, struct Node *b){
-
-	char temp1[25];
-	char temp2[255];
-	strcpy(temp1, a->username);
-	strcpy(temp2, a->message);
-	strcpy(a->username, b->username);
-	strcpy(a->message, b->username);
-	strcpy(b->username, temp1);
-	strcpy(b->message, temp2);
-}
-
 void insertfront(struct List *list, char username[], char message[]){
 	
 	struct Node *newnode = CreateNode(username, message);
@@ -258,8 +254,6 @@ void insertfront(struct List *list, char username[], char message[]){
 	newnode->next = list->start;
 	list->start = newnode;
 }
-
-
 
 void linearsearch(struct List *list, char user[]){
 
