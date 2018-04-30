@@ -8,6 +8,7 @@ struct List;
 void Traverse(struct List *list);
 void bubbleSort(struct Node *start);
 void swap(struct Node *a, struct Node *b);
+void insertfront(struct List *list, char username[], char message[]);
 
 int main(){
 
@@ -217,4 +218,12 @@ void swap(struct Node *a, struct Node *b){
 	strcpy(a->message, b->username);
 	strcpy(b->username, temp1);
 	strcpy(b->message, temp2);
+}
+
+void insertfront(struct List *list, char username[], char message[]){
+	
+	struct Node *newnode = CreateNode(username, message);
+	
+	newnode->next = list->start;
+	list->start = newnode;
 }
