@@ -5,10 +5,12 @@
 /*function prototypes*/
 struct Node;
 struct List;
+struct List *CreateList();
 void Traverse(struct List *list);
-void bubbleSort(struct Node *start);
+void bubbleSort(struct List *list);
 void swap(struct Node *a, struct Node *b);
 void insertfront(struct List *list, char username[], char message[]);
+void linearsearch(struct List *list, char user[]);
 
 int main(){
 	
@@ -16,9 +18,9 @@ int main(){
 	int menu1;
 	int menu2;
 	char channel [25];
-	char user;
-	struct List *list;
-	struct Node *start;
+	char user [25];
+	char mess[255];
+	struct List *list = CreateList();
 
 	/*Main Menu*/
 	do{
@@ -43,7 +45,30 @@ int main(){
 				printf("Enter Channel Name: ");
 				scanf("%s", channel);
 				printf("\nConnecting to %s \n", channel);
-				printf("\nAPI not functioning \n");
+				printf("\nAPI not functioning \n\n");
+
+				do{
+					printf("╔════════════════════════════╗\n");
+					printf("║     |Manual Insertion|     ║\n");
+					printf("║━━━━━━━━━━━━━━━━━━━━━━━━━━━━║\n");
+					printf("║ 1. Yes                     ║\n");
+					printf("║ 2. No                      ║\n");
+					printf("╚════════════════════════════╝\n \n");
+					printf("Enter choice(1-2): ");
+					scanf("%d", &menu2);
+
+					switch(menu2){
+						/*Manual Data Insertion*/
+						case 1:
+							printf("Enter a username: ");
+							scanf("%s", user);
+							printf("Enter message: ");
+							scanf("%s", mess);
+							insertfront(list, user, mess);
+						default:
+							break;
+					}
+				} while(menu2 != 2);
 				break;
 			/*Print the list*/
 			case 2:
@@ -70,8 +95,8 @@ int main(){
 					switch(menu2){
 						/*Bubble Sort*/
 						case 1:
-							if(start != NULL){
-								bubbleSort(start);
+							if(list != NULL){
+								bubbleSort(list);
 							} else {
 								printf("The list does not exist. \n");
 							}
@@ -84,6 +109,7 @@ int main(){
 							break;
 					}
 				} while(menu2 != 3);
+				break;
 			/*Search Function*/
 			case 4:
 				/*Search Menu*/
@@ -101,9 +127,13 @@ int main(){
 					switch(menu2){
 						/*Linear Search*/
 						case 1:
-							printf("\n Enter username\n");
-							scanf("%s",user);
-							linearsearch(list, user)
+							if(list != NULL){
+								printf("\n Enter username\n");
+								scanf("%s", user);
+								linearsearch(list, user);
+							} else {
+								printf("The list does not exist. \n");
+							}
 							break;
 						/*Binary Search*/
 						case 2:
@@ -183,16 +213,16 @@ void Traverse(struct List *list){
 }
 
 /*Bubble Sort Function*/
-void bubbleSort(struct Node *start){
+void bubbleSort(struct List *list){
 
 	int swapped;
 	struct Node *ptr1;
 	struct Node *lptr = NULL;
+	ptr1 = list->start;
 
 	do{
 
 		swapped = 0;
-		ptr1 = start;
 
 		while (ptr1->next != lptr){
 
@@ -231,18 +261,18 @@ void insertfront(struct List *list, char username[], char message[]){
 
 
 
-struct Node *linearsearch(struct List *list, char user)
-{
-struct Node *temp = (struct Node *)malloc(sizeof(struct Node)); 
-temp=list->start;
-while (temp!=NULL)
-{ if (strcmp(user,temp->username)==0)
-	{printf("\nusername:%s message:%s\n",temp->username,temp->message);}
- temp=temp->next;
+void linearsearch(struct List *list, char user[]){
+
+	struct Node *temp = (struct Node *)malloc(sizeof(struct Node)); 
+	temp=list->start;
+	while (temp!=NULL){
+		if (strcmp(user,temp->username)==0){
+			printf("\nusername:%s message:%s\n",temp->username,temp->message);
+		}
+	temp=temp->next;
+	}
+	printf("\nSearch Complete\n");
 }
-printf("\nno user found\n")
 
 
 
-
-}
